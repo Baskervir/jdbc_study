@@ -35,7 +35,7 @@ public class JDBCUserManagerDao implements UserManageDao {
                 String lastName = rs.getString(3);
                 long timestamp = rs.getLong(4);
 
-                UserDTO newUserDTO = new UserDTO(actorId, firstName, lastName, timestamp);
+                UserDTO newUserDTO = new UserDTO(actorId, firstName, lastName, System.currentTimeMillis());
                 dtos.add(newUserDTO);
 
             }

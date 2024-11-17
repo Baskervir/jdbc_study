@@ -3,6 +3,6 @@ package org.newsystem.channel;
 public class ConsoleInputChannel implements InputChannel {
     @Override
     public String listen() {
-        return "현재 의미 없는 문자열 상태.";
+        return "readAll /actors?pageNum=1&pageSize=10";
     }
 }
