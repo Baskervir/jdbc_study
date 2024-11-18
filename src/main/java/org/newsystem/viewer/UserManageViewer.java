@@ -6,12 +6,16 @@ import java.util.List;
 
 public class UserManageViewer {
 
-    public String viewForReadAllUserInfo(List<UserInfo> infos) {
-        StringBuilder b = new StringBuilder();
-        for (int i = 0; i < infos.size(); i++) {
-            b.append("next user info : " + )
-        }
-        return "user 정보 : => " + infos.size();
-    }
+    public String viewForReadAllUserInfo(int pageNum, int pageSize, List<UserInfo> userInfos) {
+        String metadataView = String.format("pageSize is %d, and num is %d", pageSize, pageNum);
 
+        StringBuilder userInfoViews = new StringBuilder();
+
+        userInfoViews.append(metadataView).append("\n");
+
+        for (int i = 0; i < userInfos.size(); i++) {
+            userInfoViews.append(String.format("%2d 번째 유저 정보 : %s\n", i+1, userInfos.get(i)));
+        }
+        return userInfoViews.toString();
+    }
 }

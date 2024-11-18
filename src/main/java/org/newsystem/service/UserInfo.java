@@ -12,4 +12,13 @@ public class UserInfo {
         this.lastName = lastName;
         this.lastUpdate = lastUpdate;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "actorId=" + actorId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }
