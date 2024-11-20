@@ -1,15 +1,16 @@
-package org.newsystem;
+package org.readsystem;
 
-import org.newsystem.channel.ConsoleInputChannel;
-import org.newsystem.channel.InputChannel;
-import org.newsystem.controller.ControllerProxy;
-import org.newsystem.controller.UserController;
-import org.newsystem.dao.JDBCUserManagerDao;
-import org.newsystem.dao.UserManageDao;
-import org.newsystem.parser.InputParser;
-import org.newsystem.parser.UserRequest;
-import org.newsystem.service.UserManageService;
-import org.newsystem.viewer.UserManageViewer;
+
+import org.readsystem.channel.ConsoleInputChannel;
+import org.readsystem.channel.InputChannel;
+import org.readsystem.controller.ControllerProxy;
+import org.readsystem.controller.UserController;
+import org.readsystem.dao.JDBCUserManagerDao;
+import org.readsystem.dao.UserManageDao;
+import org.readsystem.parser.InputParser;
+import org.readsystem.parser.UserRequest;
+import org.readsystem.service.UserManageService;
+import org.readsystem.viewer.UserManageViewer;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,7 +29,6 @@ public class Main {
         String userInput = channel.listen();
         UserRequest parseResult = parser.parse(userInput);
         String view = proxy.handle(parseResult);
-
 
         System.out.println(view);
     }

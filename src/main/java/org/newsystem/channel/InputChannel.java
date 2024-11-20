@@ -13,5 +13,6 @@ public interface InputChannel {
      *  read
      * **/
     String listen();
+//    String listen2();
 
 }

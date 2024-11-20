@@ -1,16 +1,11 @@
-package org.newsystem.parser;
+package org.readsystem.parser;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @implSpec 
- *  => add /actors?firstName=cho&lastName=hyunil
- * **/
-
 public class InputParser {
     public UserRequest parse(String rawString) {
-        
+
         String method = getMethodFromRawString(rawString);
         String path = getPathFromRawString(rawString);
         Map<String, String> argsAsMap = getArgsFromRawString(rawString);

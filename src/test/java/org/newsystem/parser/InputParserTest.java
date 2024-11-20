@@ -21,6 +21,21 @@ class InputParserTest {
         Assertions.assertEquals("cho", args.get("firstName"));
         Assertions.assertEquals("hyunil", args.get("lastName"));
     }
+
+    @Test
+    @DisplayName("read /actors?firstName=hwang&lastname=jungmin")
+    public void t2() {
+        String rawString  = "read /actors?firstName=hwang&lastName=jungmin";
+        InputParser parser = new InputParser();
+        UserRequest request = parser.parse(rawString);
+
+        Assertions.assertEquals("read", request.method());
+        Assertions.assertEquals("actors", request.path());
+        Map<String, String> args = request.args();
+
+        Assertions.assertEquals("hwang", args.get("firstName"));
+        Assertions.assertEquals("jungmin", args.get("lastName"));
+    }
 }
 
 // 리팩터링, 가독성으로 위한(기능은 그대로)

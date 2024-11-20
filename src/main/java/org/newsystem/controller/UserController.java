@@ -22,16 +22,16 @@ public class UserController {
         Map<String, String> args = req.args();
         ValidateInputKeys vk = new ValidateInputKeys();
 
-        int pageNum = 0;
-        int pageSize = 0;
+        int pageNum = Integer.parseInt(args.get("pageNum"));
+        int pageSize = Integer.parseInt(args.get("pageSize"));
 
-        try {
-            vk.validateInputKeys(args);
-            pageNum = Integer.parseInt(args.get("pageNum"));
-            pageSize = Integer.parseInt(args.get("pageSize"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            vk.validateInputKeys(args);
+//            pageNum = Integer.parseInt(args.get("pageNum"));
+//            pageSize = Integer.parseInt(args.get("pageSize"));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         List<UserInfo> allInfos = this.service.findByAll(pageNum, pageSize);
 
         return this.viewer.viewForReadAllUserInfo(pageNum, pageSize, allInfos);
