@@ -22,8 +22,8 @@ public class UserController {
         Map<String, String> args = req.args();
         ValidateInputKeys vk = new ValidateInputKeys();
 
-        int pageNum;
-        int pageSize;
+        int pageNum = 0;
+        int pageSize = 0;
 
         try {
             vk.validateInputKeys(args);
