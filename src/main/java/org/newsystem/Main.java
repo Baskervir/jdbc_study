@@ -2,34 +2,44 @@ package org.newsystem;
 
 import org.newsystem.channel.ConsoleInputChannel;
 import org.newsystem.channel.InputChannel;
+import org.newsystem.channel.InputChannelFactory;
+import org.newsystem.container.ConfigurationMap;
+import org.newsystem.container.IocContainer;
+import org.newsystem.container.SimpleIocContainer;
 import org.newsystem.controller.ControllerProxy;
-import org.newsystem.controller.UserController;
-import org.newsystem.dao.JDBCUserManagerDao;
-import org.newsystem.dao.UserManageDao;
 import org.newsystem.parser.InputParser;
 import org.newsystem.parser.UserRequest;
-import org.newsystem.service.UserManageService;
-import org.newsystem.viewer.UserManageViewer;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
 //조립단계
-        InputChannel channel = new ConsoleInputChannel();
-        InputParser parser = new InputParser();
 
-        UserManageDao dao = new JDBCUserManagerDao();
+        ConfigurableApplicationContext ctx = SpringApplication.run(Main.class, args);
+        InputChannel inputChannel = ctx.getBean(InputChannel.class);
+        InputParser parser = ctx.getBean(InputParser.class);
+        ControllerProxy proxy = ctx.getBean(ControllerProxy.class);
 
-        UserManageViewer viewer = new UserManageViewer();
-        UserManageService service = new UserManageService(dao);
+        String userResquestString = inputChannel.listen();
+        UserRequest request = parser.parse(userResquestString);
 
-        UserController controller = new UserController(service, viewer);
-        ControllerProxy proxy = new ControllerProxy(controller);
-
-        String userInput = channel.listen();
-        UserRequest parseResult = parser.parse(userInput);
-        String view = proxy.handle(parseResult);
-
-
+        String view = proxy.handle(request);
         System.out.println(view);
+
+//        String listen = inputChannel.listen();
+//        System.out.println(listen);
+
+//        ControllerProxy bean = ctx.getBean(ControllerProxy.class);
+//
+//        System.out.println(bean);
+    }
+
+    private static InputParser getInputParser() {
+        return new InputParser();
     }
 }

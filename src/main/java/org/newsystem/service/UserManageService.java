@@ -2,13 +2,17 @@ package org.newsystem.service;
 
 import org.newsystem.dao.UserDTO;
 import org.newsystem.dao.UserManageDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class UserManageService {
     private final UserManageDao dao;
 
+    @Autowired
     public UserManageService(UserManageDao dao) {
         this.dao = dao;
     }

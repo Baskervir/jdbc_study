@@ -1,5 +1,7 @@
 package org.newsystem.parser;
 
+import org.springframework.stereotype.Service;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,6 +10,7 @@ import java.util.Map;
  *  => add /actors?firstName=cho&lastName=hyunil
  * **/
 
+@Service
 public class InputParser {
     public UserRequest parse(String rawString) {
         

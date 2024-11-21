@@ -1,9 +1,11 @@
 package org.newsystem.viewer;
 
 import org.newsystem.service.UserInfo;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class UserManageViewer {
 
     public String viewForReadAllUserInfo(int pageNum, int pageSize, List<UserInfo> userInfos) {

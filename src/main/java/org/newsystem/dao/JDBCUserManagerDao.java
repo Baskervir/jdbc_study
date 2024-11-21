@@ -1,5 +1,7 @@
 package org.newsystem.dao;
 
+import org.springframework.stereotype.Repository;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -7,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class JDBCUserManagerDao implements UserManageDao {
 
     static private String driver = "com.mysql.cj.jdbc.Driver";
