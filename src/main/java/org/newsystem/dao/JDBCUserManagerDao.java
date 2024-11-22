@@ -53,6 +53,47 @@ public class JDBCUserManagerDao implements UserManageDao {
             closeSafe(rs);
         }
     }
+
+    @Override
+    public List<OneUserDTO> findOne(String firstName, String lastName) {
+
+        Connection conn = null;
+        Statement stat = null;
+        ResultSet rs = null;
+        try {
+            Class.forName(driver);
+            conn  = DriverManager.getConnection(url, user, password);
+            stat = conn.createStatement();
+            rs = stat.executeQuery(String.format("select actor_id, first_name, last_name from actor where first_name = \"%s\" and last_name = \"%s\"", firstName, lastName));
+
+            List<OneUserDTO> dtos = new ArrayList<>();
+
+            while (rs.next()){
+
+                int actorId = rs.getInt(1);
+                String first_name = rs.getString(2);
+                String last_name = rs.getString(3);
+
+                OneUserDTO newUserDTO = new OneUserDTO(actorId, first_name, last_name);
+                dtos.add(newUserDTO);
+
+            }
+
+            return dtos;
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }finally {
+            closeSafe(conn);
+            closeSafe(stat);
+            closeSafe(rs);
+        }
+    }
+
+
+
+
+
     private static void closeSafe(AutoCloseable conn) {
         if(conn != null) {
             try {

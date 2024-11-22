@@ -20,4 +20,14 @@ public class UserManageViewer {
         }
         return userInfoViews.toString();
     }
+
+    public String viewForReadUserInfo(String firstName, String lastName, int actorId) {
+        String metadataView = String.format("%s %s's actorId is %d", firstName, lastName, actorId);
+
+        StringBuilder userInfoView = new StringBuilder();
+
+        userInfoView.append(metadataView);
+
+        return userInfoView.toString();
+    }
 }

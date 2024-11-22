@@ -1,6 +1,8 @@
 package org.newsystem.controller;
 
+import org.newsystem.dao.OneUserDTO;
 import org.newsystem.parser.UserRequest;
+import org.newsystem.service.OneUserInfo;
 import org.newsystem.service.UserInfo;
 import org.newsystem.service.UserManageService;
 import org.newsystem.viewer.UserManageViewer;
@@ -35,12 +37,16 @@ public class UserController {
         return this.viewer.viewForReadAllUserInfo(pageNum, pageSize, allInfos);
     }
 
-    public String hansleRequestForRead(UserRequest req) {
-        return "";
-    }
+    public String handleRequestForReadUserInfo(UserRequest req) {
+        Map<String, String> args = req.args();
 
-    public String handleRequestForReadUserInfo(UserRequest request) {
-        return "";
+        String firstName = args.get("firstName");
+        String lastName = args.get("lastName");
+        int actorId = 000;
+
+
+        List<OneUserInfo> oneInfo = this.service.findByOne(firstName, lastName);
+        return this.viewer.viewForReadUserInfo(firstName, lastName, actorId);
     }
 
 }
