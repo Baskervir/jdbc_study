@@ -35,6 +35,10 @@ public class UserController {
         return this.viewer.viewForReadAllUserInfo(pageNum, pageSize, allInfos);
     }
 
+    public String hansleRequestForRead(UserRequest req) {
+        return "";
+    }
+
     public String handleRequestForReadUserInfo(UserRequest request) {
         return "";
     }
