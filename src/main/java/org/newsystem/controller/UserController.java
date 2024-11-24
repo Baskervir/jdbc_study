@@ -1,6 +1,5 @@
 package org.newsystem.controller;
 
-import org.newsystem.dao.OneUserDTO;
 import org.newsystem.parser.UserRequest;
 import org.newsystem.service.OneUserInfo;
 import org.newsystem.service.UserInfo;
@@ -9,7 +8,6 @@ import org.newsystem.viewer.UserManageViewer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +40,7 @@ public class UserController {
 
         String firstName = args.get("firstName");
         String lastName = args.get("lastName");
-        int actorId = 000;
+        int actorId = 0;
 
 
         List<OneUserInfo> oneInfo = this.service.findByOne(firstName, lastName);
