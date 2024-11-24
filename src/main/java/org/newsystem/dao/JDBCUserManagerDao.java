@@ -70,11 +70,11 @@ public class JDBCUserManagerDao implements UserManageDao {
 
             while (rs.next()){
 
-                int actorId = rs.getInt(1);
-                String first_name = rs.getString(2);
-                String last_name = rs.getString(3);
+                String first_name = rs.getString(1);
+                String last_name = rs.getString(2);
+                //actorId = rs.getInt(3);
 
-                OneUserDTO newUserDTO = new OneUserDTO(actorId, first_name, last_name);
+                OneUserDTO newUserDTO = new OneUserDTO(first_name, last_name);
                 dtos.add(newUserDTO);
 
             }

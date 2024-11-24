@@ -40,11 +40,11 @@ public class UserController {
 
         String firstName = args.get("firstName");
         String lastName = args.get("lastName");
-        int actorId = 0;
+        //int actorId = Integer.parseInt(args.get("actorId"));
 
 
         List<OneUserInfo> oneInfo = this.service.findByOne(firstName, lastName);
-        return this.viewer.viewForReadUserInfo(firstName, lastName, actorId);
+        return this.viewer.viewForReadUserInfo(firstName, lastName, oneInfo);
     }
 
 }

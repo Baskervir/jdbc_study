@@ -1,5 +1,6 @@
 package org.newsystem.viewer;
 
+import org.newsystem.service.OneUserInfo;
 import org.newsystem.service.UserInfo;
 import org.springframework.stereotype.Component;
 
@@ -21,12 +22,16 @@ public class UserManageViewer {
         return userInfoViews.toString();
     }
 
-    public String viewForReadUserInfo(String firstName, String lastName, int actorId) {
-        String metadataView = String.format("%s %s's actorId is %d", firstName, lastName, actorId);
+    public String viewForReadUserInfo(String firstName, String lastName, List<OneUserInfo> userInfo) {
+        String metadataView = String.format("firstName is %s, and lastName is %s.", firstName, lastName);
 
         StringBuilder userInfoView = new StringBuilder();
 
         userInfoView.append(metadataView);
+
+        for (int i = 0; i < userInfo.size(); i++) {
+            userInfoView.append(String.format("배우 정보 검색 결과 : %s\n", userInfo.get(i)));
+        }
 
         return userInfoView.toString();
     }

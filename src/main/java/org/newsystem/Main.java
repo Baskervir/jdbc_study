@@ -1,19 +1,12 @@
 package org.newsystem;
 
-import org.newsystem.channel.ConsoleInputChannel;
 import org.newsystem.channel.InputChannel;
-import org.newsystem.channel.InputChannelFactory;
-import org.newsystem.container.ConfigurationMap;
-import org.newsystem.container.IocContainer;
-import org.newsystem.container.SimpleIocContainer;
 import org.newsystem.controller.ControllerProxy;
 import org.newsystem.parser.InputParser;
 import org.newsystem.parser.UserRequest;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 @SpringBootApplication
 public class Main {
