@@ -47,6 +47,16 @@ public class UserController {
         return this.viewer.viewForReadUserInfo(firstName, lastName, oneInfo);
     }
 
+    public String handleRequestForAddUserInfo(UserRequest req) {
+        Map<String, String> args = req.args();
+
+        String firstName = args.get("firstName");
+        String lastName = args.get("lastName");
+
+        List<OneUserInfo> addUserInfo = this.service.findByOne(firstName, lastName);
+        return this.viewer.viewForAddUserInfo(firstName, lastName);
+    }
+
 }
 
 //mvc중 컨트롤러

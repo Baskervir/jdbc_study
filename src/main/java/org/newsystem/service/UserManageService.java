@@ -32,6 +32,10 @@ public class UserManageService {
         List<OneUserDTO> oneUser = this.dao.findOne(firstName, lastName);
         List<OneUserInfo> info = new ArrayList<>();
 
+        for (OneUserDTO userDTO : oneUser) {
+            info.add(userDTO.mapToInfo());
+        }
+
         return info;
     }
 

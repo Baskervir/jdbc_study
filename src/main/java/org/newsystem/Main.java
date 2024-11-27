@@ -21,7 +21,7 @@ public class Main {
         String userResquestString = inputChannel.listen();
         UserRequest request = parser.parse(userResquestString);
 
-        String view = proxy.handle(request);
+        String view = proxy.handle2(request);   //handle -> handle2로 수정 (ControllerProxy)
         System.out.println(view);
 
 //        String listen = inputChannel.listen();

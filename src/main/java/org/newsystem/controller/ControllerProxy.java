@@ -41,5 +41,14 @@ public class ControllerProxy {
         throw new RuntimeException("unsupported path");
     }
 
+    public String handle2(UserRequest request) {
+        if (request.path().equals("actors")) {
+            return this.target.handleRequestForAddUserInfo(request); //handleRequestForReadAll -> handleRequestForAddUserInfo (UserController.java)
+        } else if (request.path().equals("actor")) {
+            return this.target.handleRequestForAddUserInfo(request);    //handleRequestForReadUserInfo -> handleRequestForAddUserInfo (UserController.java)
+        }
+        throw new RuntimeException("unsupported path");
+    }
+
 }
 // request 들어오면 알맞는 기능을 수행해주는 역할
