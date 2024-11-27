@@ -53,8 +53,8 @@ public class UserController {
         String firstName = args.get("firstName");
         String lastName = args.get("lastName");
 
-        List<OneUserInfo> addUserInfo = this.service.findByOne(firstName, lastName);
-        return this.viewer.viewForAddUserInfo(firstName, lastName);
+        OneUserInfo addUserInfo = this.service.addUser(firstName, lastName);
+        return this.viewer.viewForAddUserInfo(addUserInfo);
     }
 
 }

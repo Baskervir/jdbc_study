@@ -36,8 +36,8 @@ public class UserManageViewer {
         return userInfoView.toString();
     }
 
-    public String viewForAddUserInfo(String firstName, String lastName) {
-        String metadataView = String.format("added firstName is %s, and lastName is %s.", firstName, lastName);
+    public String viewForAddUserInfo(OneUserInfo userInfo) {
+        String metadataView = String.format("added firstName is %s, and lastName is %s.", userInfo.getFirstName(), userInfo.getLastName());
 
         return metadataView;
     }

@@ -39,14 +39,9 @@ public class UserManageService {
         return info;
     }
 
-//    public List<OneUserInfo> findByOne(String firstName, String lastName) {
-//        List<OneUserDTO> one = this.dao.findOne(firstName, lastName);
-//        List<OneUserInfo> infos = new ArrayList<>();
-//
-//        for (UserDTO userDTO : one) {
-//            infos.add(userDTO.mapToInfo());
-//        }
-//
-//        return infos;
-//    }
+    public OneUserInfo addUser(String firstName, String lastName) {
+        OneUserDTO addedUser = this.dao.addOne(firstName,lastName);
+
+        return addedUser.mapToInfo();
+    }
 }

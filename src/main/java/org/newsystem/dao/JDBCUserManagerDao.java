@@ -91,7 +91,7 @@ public class JDBCUserManagerDao implements UserManageDao {
     }
 
     @Override
-    public List<OneUserDTO> addOne(String firstName, String lastName) {
+    public OneUserDTO addOne(String firstName, String lastName) {
 
         Connection conn = null;
         Statement stat = null;
@@ -100,21 +100,17 @@ public class JDBCUserManagerDao implements UserManageDao {
             Class.forName(driver);
             conn  = DriverManager.getConnection(url, user, password);
             stat = conn.createStatement();
-            rs = stat.executeQuery(String.format("INSERT INTO actor(first_name, last_name) VALUES (\"%s\", \"%s\")", firstName, lastName));
-
-            List<OneUserDTO> dtos = new ArrayList<>();
+            rs = stat.executeQuery(String.format("INSERT INTO actor(first_name, last_name) VALUES (\"%s\", \"%s)", firstName, lastName));
 
             while (rs.next()){
 
                 String first_name = rs.getString(1);
                 String last_name = rs.getString(2);
 
-                OneUserDTO newUserDTO = new OneUserDTO(first_name, last_name);
-                dtos.add(newUserDTO);
-
+                return new OneUserDTO(first_name, last_name);
             }
 
-            return dtos;
+            return null;
 
         } catch (Exception e) {
             throw new RuntimeException(e);
